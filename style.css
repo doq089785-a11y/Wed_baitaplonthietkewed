@@ -1,0 +1,459 @@
+body {
+  font-family: 'Segoe UI', sans-serif; /*Chọn font chữ chính cho toàn trang */
+  margin: 0; /*Xóa khoảng trắng mặc định xung quanh trang */
+  padding: 0; /*Xóa khoảng đệm bên trong thẻ body */
+  background: linear-gradient(to right, #e0f7fa, #fce4ec); /*Tạo nền loang màu từ xanh nhạt sang hồng nhạt*/
+  color: #333;/*Thiết lập màu chữ mặc định là xám đậm */
+  perspective: 1000px;/*Kích hoạt hiệu ứng 3D cho các phần tử con có transform */
+}
+
+header {
+  background-color: #1a1a1a; /*Đặt màu nền header là đen xám đậm */
+  color: white; /*Đặt màu chữ trong header là trắng */
+  padding: 20px 0; /*Tạo khoảng cách trên và dưới nội dung header */
+  text-align: center; /*Căn giữa nội dung trong header */
+  transform-style: preserve-3d; /*Kích hoạt hiệu ứng 3D cho phần tử con */
+}
+
+.tilt {
+  display: inline-block; /*Cho phép phần tử vừa hiển thị như dòng, vừa có thể áp dụng các thuộc tính khối như transform */
+  transform: rotateX(0deg) rotateY(0deg); /*Thiết lập trạng thái ban đầu không xoay theo trục X và Y */
+  transition: transform 0.5s ease;/*Tạo hiệu ứng chuyển động mượt mà khi thuộc tính transform thay đổi */
+}
+
+.tilt:hover { /*:hover   Kích hoạt khi người dùng rê chuột vào phần tử có class .tilt */
+  transform: rotateX(0deg) rotateY(0deg) /*Giữ nguyên góc xoay theo trục X và Y */
+  scale(1.05); /*Phóng to phần tử lên 105% kích thước gốc */
+}
+
+nav ul {
+  list-style: none;/*Loại bỏ ký hiệu đầu dòng mặc định (chấm tròn, vuông, v.v.) của danh sách <ul> */
+  padding: 0; /*Xóa khoảng đệm bên trong danh sách */
+  margin: 10px 0 0; /*Tạo khoảng cách 10px phía trên danh sách menu*/
+}
+
+nav ul li {
+  display: inline-block; /*Hiển thị mỗi mục menu (<li>) như một khối nằm ngang */
+  margin: 0 15px; /*Tạo khoảng cách ngang 15px giữa các mục menu*/
+}
+
+nav ul li a {
+  color: #00ffff; /*Đặt màu chữ cho liên kết là xanh ngọc sáng (cyan) */
+  text-decoration: none; /*Loại bỏ gạch chân mặc định của thẻ <a> */
+  font-weight: bold; /*Làm chữ đậm hơn */
+  transition: transform 0.3s ease; /*Tạo hiệu ứng chuyển động mượt mà khi thuộc tính transform thay đổi (ví dụ khi hover) */
+}
+
+nav ul li a:hover {  /*Áp dụng khi người dùng rê chuột vào một liên kết trong menu (<a> nằm trong <li> của <ul>) */
+  transform: scale(1.2); /*Phóng to phần tử lên 120% kích thước gốc */
+}
+
+.news-grid {
+  max-width: 1100px; /*Giới hạn chiều rộng tối đa của khối tin tức */
+  margin: 40px auto; /*Tạo khoảng cách 40px phía trên và dưới, căn giữa ngang */
+  padding: 0 20px; /*Tạo khoảng cách 20px hai bên nội dung bên trong */
+  display: grid; /*Kích hoạt layout dạng lưới CSS Grid */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /*Tự động chia các cột có chiều rộng tối thiểu 300px, tối đa 1 phần */
+  gap: 30px;  /*Tạo khoảng cách 30px giữa các thẻ tin */
+}
+
+.card {
+  background-color: white; /*Đặt nền thẻ là màu trắng */
+  padding: 25px; /*Tạo khoảng cách bên trong thẻ */
+  border-radius: 10px; /*Bo tròn góc thẻ */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2); /*Tạo bóng đổ phía sau thẻ */
+  transform: rotateY(5deg); /*Nghiêng thẻ nhẹ theo trục Y (chiều ngang) */
+  transition: transform 0.5s ease, box-shadow 0.5s ease; /*Làm hiệu ứng xoay và bóng đổ chuyển động mượt mà khi thay đổi */
+}
+
+.card:hover { /*Kích hoạt khi người dùng rê chuột vào thẻ .card */
+  transform: rotateY(0deg)  /*Xoay thẻ về chính diện (hết nghiêng) */
+  scale(1.03); /*Phóng to thẻ lên 103% kích thước gốc */
+  box-shadow: 0 20px 30px rgba(0,0,0,0.3); /*Tăng độ đổ bóng khi hover*/
+}
+
+.card h2 {
+  margin-top: 0; /*Xóa khoảng cách phía trên của tiêu đề <h2> trong thẻ .card */
+  color: #0077cc; /*Đặt màu chữ cho tiêu đề là xanh lam đậm (mã hex) */
+}
+
+.card a {
+  display: inline-block; /*Cho phép liên kết <a> hiển thị như một khối nằm trong dòng */
+  margin-top: 10px; /*Tạo khoảng cách phía trên liên kết */
+  color: #0077cc; /*Đặt màu chữ là xanh lam đậm */
+  text-decoration: none; /*Loại bỏ gạch chân mặc định của liên kết */
+  font-weight: bold; /*Làm chữ đậm hơn */
+  transition: transform 0.3s ease; /*Tạo hiệu ứng chuyển động mượt mà khi thuộc tính transform thay đổi (ví dụ khi hover) */
+}
+
+.card a:hover { /*Kích hoạt khi người dùng rê chuột vào liên kết trong thẻ .card */
+  transform: scale(1.1); /*Phóng to liên kết lên 110% kích thước gốc */
+  text-decoration: underline; /*Hiển thị gạch chân dưới liên kết khi hover */
+}
+
+footer {
+  background-color: #1a1a1a; /*Đặt nền chân trang là màu đen xám đậm */
+  color: white; /*Đặt màu chữ là trắng */
+  text-align: center; /*Căn giữa nội dung trong footer*/
+  padding: 15px 0; /*Tạo khoảng cách trên và dưới nội dung */
+  margin-top: 40px; /*Tạo khoảng cách giữa footer và phần nội dung phía trên */
+  transform: rotateX(5deg); /*Tạo khoảng cách giữa footer và phần nội dung phía trên */
+}
+
+/*Giao diện tối (Dark Mode ) */
+body.dark-mode { /*Kích hoạt nền tối toàn trang */
+  background: linear-gradient(to right, #121212, #1e1e1e); /*Nền gradient đen xám */
+  color: #f0f0f0;/*Màu chữ sáng nhẹ */
+}
+
+body.dark-mode .card {  
+  background-color: #1f1f1f; /*Đặt nền của thẻ .card thành màu xám đen */
+  box-shadow: 0 10px 20px rgba(255,255,255,0.1); /*Tạo bóng đổ sáng nhẹ phía sau thẻ */
+}
+
+body.dark-mode footer {  /*Áp dụng kiểu riêng cho phần chân trang khi chế độ tối được kích hoạt */
+  background-color: #000; /*Đặt nền của footer thành màu đen tuyệt đối */
+}
+
+body.dark-mode nav ul li a {  /*Áp dụng kiểu riêng cho các liên kết trong menu khi chế độ tối được bật */
+  color: #00e5ff; /*Đặt màu chữ của liên kết là xanh neon sáng */
+}
+
+body.dark-mode .card h2 {  /*Áp dụng kiểu riêng cho tiêu đề <h2> trong thẻ .card khi chế độ tối được bật */
+  color: #00bcd4;  /*Đặt màu chữ là xanh lam sáng */
+}
+
+body.dark-mode .card a {  /*Áp dụng kiểu riêng cho liên kết trong thẻ .card khi chế độ tối được bật */
+  color: #00e5ff;  /*Đặt màu chữ là xanh neon sáng */
+}
+
+/* Hình ảnh */
+.card img {
+  width: 100%;  /*Hình ảnh chiếm toàn bộ chiều ngang của thẻ .card */
+  height: auto;  /*Tự động điều chỉnh chiều cao theo tỷ lệ gốc */
+  border-radius: 8px; /*Bo tròn góc ảnh */
+  margin-bottom: 15px;/*Tạo khoảng cách giữa ảnh và nội dung bên dưới */
+  transform: scale(1);/*Thiết lập trạng thái ban đầu không phóng to ảnh */
+  transition: transform 0.3s ease;/*Tạo hiệu ứng chuyển động mượt mà khi ảnh thay đổi kích thước */
+}
+
+.card:hover img {  /*Áp dụng cho hình ảnh bên trong thẻ .card khi người dùng rê chuột vào toàn bộ thẻ */
+  transform: scale(1.05);  /*Phóng to hình ảnh lên 105% kích thước gốc */
+}
+
+/* Hiệu ứng đổ bóng */
+nav {
+  background-color: #222; /*Đặt nền thanh điều hướng là màu xám đen */
+  padding: 10px 0; /*Đặt nền thanh điều hướng là màu xám đen */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3); /*Tạo bóng đổ phía dưới thanh điều hướng */
+  transform: translateZ(20px); /*Dịch chuyển nav về phía trước theo trục Z (3D) */
+}
+
+/* Tin mới */
+.latest-news {
+  max-width: 1000px; /*Giới hạn chiều rộng tối đa của khối tin */
+  margin: 40px auto; /*Tạo khoảng cách phía trên/dưới và căn giữa khối */
+  padding: 20px; /*Tạo khoảng cách bên trong khối */
+  background: linear-gradient(to right, #ffffff, #e3f2fd); /*Tạo nền chuyển màu từ trắng sang xanh nhạt */
+  border-radius: 12px; /*Bo tròn góc khối tin */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /*Tạo bóng đổ phía sau khối */
+  transform: rotateX(1deg); /*Nghiêng nhẹ khối theo trục X (chiều dọc) */
+}
+
+.latest-news h2 {
+  text-align: center; /*Căn giữa tiêu đề trong khối .latest-news */
+  font-size: 30px; /*Đặt kích thước chữ lớn cho tiêu đề */
+  margin-bottom: 30px; /*Tạo khoảng cách giữa tiêu đề và nội dung bên dưới */
+  color: #1976d2; /*Đặt màu chữ là xanh lam đậm */
+  text-shadow: 1px 1px 2px #ccc; /*Tạo bóng chữ nhẹ màu xám nhạt */
+}
+
+.news-block {
+  margin-bottom: 25px; /*Tạo khoảng cách giữa các khối tin */
+  padding: 20px; /*Tạo khoảng cách bên trong khối */
+  background-color: #fff; /*Nền trắng cho khối tin */
+  border-left: 6px solid #2196f3; /*Viền trái màu xanh lam đậm */
+  border-radius: 10px; /*Bo tròn góc khối */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /*Tạo bóng đổ nhẹ */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /*Tạo hiệu ứng mượt mà khi thay đổi kích thước hoặc bóng đổ */
+}
+
+.news-block:hover { /*Kích hoạt khi người dùng rê chuột vào khối tin */
+  transform: scale(1.02)  /*Phóng to nhẹ khối tin lên 102% */
+  rotateY(1deg);/*Nghiêng nhẹ khối theo trục Y (chiều ngang) */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /*Tăng độ bóng đổ khi hover */
+}
+
+.news-block h3 {
+  margin-top: 0; /*Xóa khoảng cách phía trên tiêu đề <h3> */
+  color: #0d47a1; /*Đặt màu chữ là xanh lam đậm */
+}
+
+.news-block p {
+  font-size: 16px; /*Đặt kích thước chữ cho đoạn văn là 16px */
+  line-height: 1.6; /*Tăng khoảng cách giữa các dòng trong đoạn văn */
+}
+
+.news-block .date {
+  display: block; /*Hiển thị phần tử .date như một khối riêng biệt */
+  margin-top: 10px; /*Tạo khoảng cách phía trên ngày tháng */
+  font-size: 14px; /*Đặt kích thước chữ nhỏ hơn nội dung chính*/
+  color: #666; /*Màu xám trung tính cho chữ */
+}
+
+/* Nút chuyển đổi */
+#toggle-theme {
+  margin-top: 15px; /*Tạo khoảng cách phía trên nút */
+  padding: 8px 16px; /*Tăng diện tích vùng nhấn của nút*/
+  font-size: 14px; /*Đặt kích thước chữ vừa phải */
+  background-color: #0077cc; /*Màu nền xanh lam đậm */
+  color: white; /*Màu chữ trắng */
+  border: none; /*Loại bỏ viền mặc định của nút */
+  border-radius: 5px; /*Bo tròn góc nút */
+  cursor: pointer; /*Hiển thị con trỏ dạng bàn tay khi rê chuột */
+  transition: transform 0.3s ease; /*Tạo hiệu ứng chuyển động mượt khi nút thay đổi kích thước hoặc vị trí */
+}
+
+#toggle-theme:hover { /*Kích hoạt khi người dùng rê chuột vào nút */
+  transform: scale(1.05); /*Phóng to nhẹ nút lên 105% kích thước gốc */
+}
+
+/* Giao diện tối */
+body.dark-mode { /*Áp dụng kiểu riêng cho toàn bộ trang khi chế độ tối được bật */
+  background: linear-gradient(to right, #121212, #1e1e1e); /*Tạo nền chuyển màu từ đen đậm sang xám đậm */
+  color: #f0f0f0; /*Đặt màu chữ là trắng xám nhẹ */
+}
+
+body.dark-mode footer {
+  background-color: #000; /*Đặt nền là màu đen tuyệt đối */
+}
+
+body.dark-mode nav ul li a { /*Áp dụng kiểu riêng cho các liên kết trong menu khi chế độ tối được bật */
+  color: #00e5ff; /*Đặt màu chữ là xanh neon sáng */
+}
+
+body.dark-mode .latest-news {
+  background-color: #1f1f1f; /*Đặt nền của khối .latest-news thành màu xám đậm */
+  box-shadow: 0 10px 20px rgba(255,255,255,0.1); /*Tạo bóng đổ sáng nhẹ phía sau khối */
+}
+
+/* Xu hướng */
+.trending-section {
+  max-width: 1000px; /*Giới hạn chiều rộng tối đa của khối */
+  margin: 50px auto; /*Tạo khoảng cách trên/dưới và căn giữa khối */
+  padding: 20px; /*Tạo khoảng cách bên trong khối */
+  background: linear-gradient(to right, #fff, #ecf3ed); /*Tạo nền chuyển màu từ trắng sang xanh nhạt */
+  border-radius: 12px; /*Bo tròn góc khối */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /*Tạo bóng đổ nhẹ phía sau khối  */
+  transform: rotateX(1deg); /*Nghiêng nhẹ khối theo trục X (chiều dọc) */
+}
+
+.trending-section h2 {
+  text-align: center; /*Căn giữa tiêu đề trong khối .trending-section */
+  font-size: 30px; /*Đặt kích thước chữ lớn cho tiêu đề */
+  margin-bottom: 30px; /*Tạo khoảng cách giữa tiêu đề và nội dung bên dưới */
+  color: #2e7d32; /*Đặt màu chữ là xanh lá đậm */
+  text-shadow: 1px 1px 2px #ccc; /* Tạo bóng chữ nhẹ màu xám nhạt */
+}
+
+.trend-card {
+  background-color: #ffffff; /*Nền trắng cho mỗi thẻ xu hướng */
+  margin-bottom: 25px; /*Tạo khoảng cách giữa các thẻ xu hướng */
+  padding: 20px; /*Tạo khoảng cách bên trong thẻ */
+  border-left: 6px solid #4caf50;/*Viền trái màu xanh lá cây  */
+  border-radius: 10px;/* Bo tròn góc thẻ */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);/*ạo bóng đổ nhẹ phía sau thẻ */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /*Tạo hiệu ứng mượt mà khi thẻ thay đổi kích thước hoặc bóng đổ */
+}
+
+/* Liên hệ */
+.contact-section {
+  max-width: 700px; /*Giới hạn chiều rộng tối đa của khối liên hệ */
+  margin: 40px auto; /*Tạo khoảng cách trên/dưới và căn giữa khối */
+  padding: 20px; /*Tạo khoảng cách bên trong khối */
+  background: linear-gradient(to right, #fff, #e0f7fa);/*Tạo nền chuyển màu từ trắng sang xanh nhạt */
+  border-radius: 12px;/* Bo tròn góc khối */
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /*Tạo bóng đổ nhẹ phía sau khối  */
+}
+
+.contact-section h2 {
+  text-align: center;/*Căn giữa tiêu đề trong khối liên hệ */
+  font-size: 28px;/*Đặt kích thước chữ lớn cho tiêu đề */
+  margin-bottom: 20px;/*Tạo khoảng cách giữa tiêu đề và nội dung bên dưới */
+  color: #00796b;/*Đặt màu chữ xanh ngọc đậm */
+}
+
+.contact-form {
+  display: flex;/*Biến phần tử .contact-form thành một flex container */
+  flex-direction: column; /*Sắp xếp các phần tử con theo chiều dọc */
+  gap: 15px;/*Tạo khoảng cách 15px giữa các phần tử con */
+}
+
+.contact-form label {
+  font-weight: bold;/*Làm chữ của nhãn label đậm hơn */
+  color: #004d40;/*Đặt màu chữ xanh ngọc đậm */
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;/*Tạo khoảng cách bên trong ô nhập liệu */
+  border: 1px solid #ccc;/*Viền mảnh màu xám nhạt */
+  border-radius: 6px;/*Bo tròn góc ô nhập liệu */
+  font-size: 15px;/*Đặt kích thước chữ vừa phải */
+  transition: border 0.3s ease; /*Tạo hiệu ứng mượt khi viền thay đổi */
+}
+
+.contact-form button {
+  background-color: #00796b;/*Nền xanh ngọc đậm cho nútNền xanh ngọc đậm cho nút */
+  color: white;/*Màu chữ trắng  */
+  padding: 10px 20px;/*Tăng diện tích nút */
+  border: none;/*Loại bỏ viền mặc định */
+  border-radius: 6px;/*Bo tròn góc nút */
+  font-size: 15px;/*Cỡ chữ vừa phải */
+  cursor: pointer;/*Biến con trỏ thành bàn tay khi hover */
+  transition: transform 0.3s ease, background-color 0.3s ease;/*Tạo hiệu ứng mượt khi thay đổi màu hoặc kích thước */
+}
+
+/* Nút Đọc thêm */
+.card a,
+.news-block a,
+.trend-card a {
+  display: inline-block; /*Biến liên kết thành khối nằm trong dòng */
+  margin-top: 10px;/*Tạo khoảng cách phía trên liên kết */
+  padding: 10px 20px;/*Tăng diện tích vùng nhấn */
+  font-weight: bold;/*Làm chữ đậm hơn */
+  color: #0077cc;/*Màu chữ xanh dương đậm */
+  text-decoration: none;/*Loại bỏ gạch chân mặc định */
+  border: 2px solid #0077cc;/*Viền xanh dương đậm quanh liên kết */
+  border-radius: 6px;/*Bo tròn góc viền */
+  transition: all 0.3s ease;/*Tạo hiệu ứng mượt khi thay đổi trạng thái */
+  position: relative;/*Thiết lập vị trí tương đối */
+  overflow: hidden; /*Ẩn phần nội dung vượt ra ngoài khung */
+}
+
+/* Hiệu ứng khi hover */
+.card a:hover,.news-block a:hover,/*Kích hoạt khi người dùng rê chuột vào liên kết */
+.trend-card a:hover {
+  color: white;/*Đổi màu chữ thành trắng khi hover */
+  border-color: #005fa3; /*Đổi màu viền sang xanh dương đậm hơn */
+}
+
+.card a:hover::before,/*Áp dụng cho phần tử giả xuất hiện trước nội dung liên kết */
+.news-block a:hover::before,/*Kích hoạt khi người dùng rê chuột vào liên kết */
+.trend-card a:hover::before {
+  left: 0;/*Di chuyển phần tử ::before về vị trí bắt đầu bên trái */
+}
+
+.card a,
+.news-block a,
+.trend-card a {
+  z-index: 1;/*Đặt thứ tự lớp hiển thị của liên kết lên cao hơn các phần tử có z-index thấp hơn hoặc mặc định (0) */
+}
+
+.card a span,
+.news-block a span,
+.trend-card a span {
+  position: relative; /*Thiết lập vị trí tương đối cho phần tử <span> */
+  z-index: 2; /*Đặt lớp hiển thị của <span> cao hơn các lớp nền (ví dụ ::before có z-index: -1) */
+}
+
+/* Vệ tinh Việt Nam đi vào quỹ đạo */
+.article-detail {
+  max-width: 900px;/*Giới hạn chiều rộng tối đa của khối bài viết */
+  margin: 40px auto;/*Căn giữa khối và tạo khoảng cách trên/dưới */
+  padding: 20px; /*Tạo khoảng cách bên trong khối */
+  background: linear-gradient(to right, #ffffff, #e3f2fd);/*Nền chuyển màu từ trắng sang xanh nhạt */
+  border-radius: 12px;/*Bo tròn các góc của khối */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);/*Tạo bóng đổ nhẹ phía sau khối*/
+}
+
+.article-detail h2 {
+  font-size: 30px;/*Đặt kích thước chữ lớn cho tiêu đề */
+  color: #1976d2;/*Màu chữ xanh dương đậm */
+  margin-bottom: 10px;/*Tạo khoảng cách giữa tiêu đề và nội dung bên dưới */
+}
+
+.article-detail .date {
+  font-size: 14px;/*Đặt kích thước chữ nhỏ gọn */
+  color: #666;/*Màu chữ xám trung tính */
+  font-style: italic;/*Làm chữ nghiêng */
+  margin-bottom: 20px;/*Tạo khoảng cách phía dưới ngày đăng */
+}
+
+.article-detail p {
+  font-size: 16px; /*Đặt kích thước chữ vừa phải cho đoạn văn */
+  line-height: 1.7;/*Tăng khoảng cách giữa các dòng trong đoạn */
+  margin-bottom: 20px;/*Tạo khoảng cách giữa các đoạn văn */
+}
+
+.article-detail blockquote {
+  font-style: italic;/*Làm chữ nghiêng */
+  background-color: #e8f5e9;/*Nền xanh lá nhạt */
+  border-left: 4px solid #4caf50;/*Viền trái xanh lá đậm */
+  padding: 10px 20px;/*Tạo khoảng cách bên trong khối */
+  margin: 20px 0;/*Tạo khoảng cách trên/dưới khối trích dẫn */
+  color: #2e7d32;/*Màu chữ xanh lá đậm */
+}
+
+.article-image {
+  width: 100%; /*Hình ảnh chiếm toàn bộ chiều ngang khối chứa */
+  height: auto; /*Tự động điều chỉnh chiều cao theo tỷ lệ gốc */
+  border-radius: 8px; /*Bo tròn góc hình ảnh */
+  margin-bottom: 20px; /*Tạo khoảng cách giữa hình ảnh và nội dung bên dưới */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);/*Tạo bóng đổ nhẹ phía sau hình ảnh */
+  transition: transform 0.3s ease; /*Tạo hiệu ứng mượt khi hình ảnh thay đổi kích thước hoặc vị trí */
+}
+
+.article-image:hover { /*Kích hoạt khi người dùng rê chuột vào hình ảnh */
+  transform: scale(1.02); /*Phóng to hình ảnh lên 102% kích thước gốc */
+}
+
+.back-link {
+  display: inline-block; /*Cho phép liên kết hoạt động như một nút */
+  margin-top: 30px; /*Tạo khoảng cách phía trên liên kết */
+  padding: 10px 20px;/*Tăng diện tích vùng nhấn */
+  font-weight: bold; /*Làm chữ đậm */
+  color: #1976d2;/* Màu chữ xanh dương */
+  text-decoration: none;/* Loại bỏ gạch chân mặc định */
+  border: 2px solid #1976d2;/* Viền xanh dương quanh liên kết */
+  border-radius: 6px; /*Bo tròn góc viền */
+  transition: all 0.3s ease;/*Tạo hiệu ứng mượt khi thay đổi trạng thái */
+  position: relative;/*Thiết lập vị trí tương đối*/
+  overflow: hidden;/*Ẩn phần nội dung vượt ra ngoài khung */
+}
+
+.back-link::before {
+  content: "";/*Tạo phần tử giả ::before */
+  position: absolute;/*Định vị tuyệt đối trong phần tử .back-link */
+  top: 0;/*Đặt vị trí bắt đầu của lớp nền ngoài khung bên trái */
+  left: -100%;/*Đặt vị trí bắt đầu của lớp nền ngoài khung bên trái */
+  width: 100%;/*Kích thước phủ toàn bộ nút */
+  height: 100%;/*Kích thước phủ toàn bộ nút */
+  background-color: #1976d2;/*Màu nền xanh dương đậm */
+  transition: left 0.3s ease;/*Tạo hiệu ứng mượt khi thay đổi vị trí left */
+  z-index: 0;/*Đặt lớp nền phía sau nội dung chính */
+}
+
+.back-link:hover {/*Kích hoạt khi người dùng rê chuột vào liên kết */
+  color: white;/*Đổi màu chữ sang trắng khi hover */
+  border-color: #0d47a1;/*Đổi màu viền sang xanh dương đậm hơn */
+}
+
+.back-link:hover::before { /*Kích hoạt phần tử giả ::before khi hover */
+  left: 0;/*Di chuyển lớp nền từ ngoài khung vào vị trí bắt đầu bên trái */
+}
+
+.back-link span {
+  position: relative;/*Thiết lập vị trí tương đối cho phần tử <span> */
+  z-index: 2;/*Đặt lớp hiển thị của <span> cao hơn các lớp nền như ::before */
+}
+
+/* Hiệu ứng  tiêu đề nghiêng và phát sáng */
+.tilt {
+  font-size: 36px;/*Cỡ chữ lớn */
+  text-align: center;/*Căn giữa nội dung */
+  transform: rotate(-1deg);/*Nghiêng nhẹ chữ sang trái */
+  color: #2196f3;/*Màu xanh dương tươi */
+  text-shadow: 0 0 8px rgba(33, 150, 243, 0.6); /*Tạo hiệu ứng ánh sáng mờ xung quanh chữ */
+  animation: pulseGlow 2s infinite; /*Áp dụng hiệu ứng động lặp vô hạn */
+}
